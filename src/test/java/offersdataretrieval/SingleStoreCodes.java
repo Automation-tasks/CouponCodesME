@@ -3,17 +3,26 @@ package offersdataretrieval;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 import com.opencsv.CSVWriter;
 
 public class SingleStoreCodes {
 
-	public static void main(String[] args) throws IOException {
+	@Test
+    public void scrapeSingleStore() throws IOException {
 		
-		WebDriver driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless=new");
+		options.addArguments("--disable-gpu");
+
+		WebDriver driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		
 		driver.get("https://www.couponcodesme.com/ae/cobone");
@@ -45,8 +54,9 @@ public class SingleStoreCodes {
               
               if(!couponCode.equalsIgnoreCase("CCME")) {
               
-            	  String[] dataValues = {offerTitle, offerDescription, couponCode};
-                  writer.writeNext(dataValues);
+            	  System.out.println(offerTitle);
+            	  System.out.println(offerDescription);
+            	  System.out.println(couponCode);
               }
           }
 		}
