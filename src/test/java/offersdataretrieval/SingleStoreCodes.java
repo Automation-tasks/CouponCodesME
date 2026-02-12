@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.opencsv.CSVWriter;
 
@@ -17,7 +18,12 @@ public class SingleStoreCodes {
 	@Test
     public void scrapeSingleStore() throws IOException {
 		
-		WebDriver driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless=new");
+		options.addArguments("--disable-gpu");
+
+		WebDriver driver = new ChromeDriver(options);
+		
 		driver.manage().window().maximize();
 		
 		driver.get("https://www.couponcodesme.com/ae/carrefour");
@@ -49,9 +55,8 @@ public class SingleStoreCodes {
               
               if(!couponCode.equalsIgnoreCase("CCME")) {
               
-            	  System.out.println(offerTitle);
-            	  System.out.println(offerDescription);
-            	  System.out.println(couponCode);
+            	  String[] dataValues = {offerTitle, offerDescription, couponCode};
+                  writer.writeNext(dataValues);
               }
           }
 		}
