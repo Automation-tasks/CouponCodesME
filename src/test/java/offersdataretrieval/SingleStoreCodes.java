@@ -30,7 +30,7 @@ public class SingleStoreCodes {
 		
 		List<WebElement> allOffers = driver.findElements(By.xpath("//div[contains(@class,'vouchersdata') and not(self::div[contains(@class,'blueborder')]) and not(preceding::h2)]"));
 		
-		 try (CSVWriter writer = new CSVWriter(new FileWriter("singleStoreData.csv", true))) {
+		 try (CSVWriter writer = new CSVWriter(new FileWriter("singleStoreCoupons.csv", true))) {
 			 
 		if(!allOffers.isEmpty()) {
 	
