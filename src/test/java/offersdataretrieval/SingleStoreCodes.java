@@ -20,7 +20,7 @@ public class SingleStoreCodes {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
-		driver.get("https://www.couponcodesme.com/ae/cobone");
+		driver.get("https://www.couponcodesme.com/ae/carrefour");
 		
 		List<WebElement> allOffers = driver.findElements(By.xpath("//div[contains(@class,'vouchersdata') and not(self::div[contains(@class,'blueborder')]) and not(preceding::h2)]"));
 		
